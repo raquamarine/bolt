@@ -121,7 +121,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
 
     ## checks
 
-    if not await utils.assert_guild(ctx, guild=ctx.guild, user=user):
+    if not await utils.assert_guild(ctx):
       return
     
     if target == user:
