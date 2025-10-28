@@ -15,7 +15,6 @@ from discord.ext import commands
 
 import bot.console as console
 import bot.markdown.help as help
-## from bot.constants.base import prefix
 import bot.utils as utils
 
 # CLASSES
