@@ -22,7 +22,6 @@ import time # TODO: replace with datetime
 
 ## pypkg
 
-## from bot.constants import *
 import bot.constants.colors as colors
 
 # FUNCTIONS

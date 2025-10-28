@@ -57,6 +57,7 @@ class Ping(commands.Cog):
 
     console.log(f"Uptime requested by {user} ({user.id})", "LOG")
 
+    # NOTE: this never happens. like quite literally never. the if statement here will be removed soon.
     if not hasattr(self.bot, "start_time"):
       console.log(f"Somehow, the bot doesn't have a start time.", "DEBUG")
       await utils.say(ctx, "Dude. The bot doesn't even have uptime yet.", ephemeral=True)

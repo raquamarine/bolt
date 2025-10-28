@@ -31,6 +31,11 @@ def get_env_var(var: str, default: Any, required=True, from_dot_env=True):
   literally does what it says on the tin
   why does this need a docstring
   '''
+  # small dilemma i had recently
+  # should console.log() calls even go in utils.py?
+  # since a lot of really stupid circular import bugs happened due to this
+  # thanks to the errors being raised here however,
+  # i feel like console.log() can be removed safely without breaking usability
   
   if from_dot_env:
     if not env_path.exists():
