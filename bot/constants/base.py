@@ -11,7 +11,7 @@ contains the bot prefix and the extensions to load.
 
 from bot.utils import get_env_var
 from bot.constants.config import default_prefix
-from pathlib import Path,
+from pathlib import Path
 import re
 
 
@@ -21,17 +21,20 @@ prefix = get_env_var("PREFIX", default=default_prefix, required=False, from_dot_
 
 # this feels very cursed
 
-f = list(Path('../cogs').iterdir())
+f = list(Path('bot/cogs').iterdir())
 extensions = []
+n = lambda i : re.sub('[/\\\\]','.',re.sub('.py$','',str(i.relative_to('bot/cogs'))))
+
 for i in f:
-  if i.name == '__init__.py' or i.name == '__pycache__':
+  if i.name == '__init__.py' or i.name == '__pycache__' or i.name == 'base.py':
     pass
   elif i.is_file():
-    n = re.sub('[/\\\\]','.',re.sub('.py$','',str(i.relative_to('../cogs'))))
-    extensions.append(f"bot.cogs.{n}")
+    print(f"bot.cogs.{n(i)}")
+    extensions.append(f"bot.cogs.{n(i)}")
   else:
     for j in i.iterdir():
       f.append(j)
+
 del f # i dont trust the garbage collector -ad
-      # (i actually just want 1-letter variables i will never write descriptive variables >:) )
+del n # (i actually just want 1-letter variables i will never write descriptive variables >:) )
 extensions = tuple(extensions)
