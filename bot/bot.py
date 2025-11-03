@@ -20,7 +20,6 @@ from discord.ext import commands
 import bot.constants.base as constants
 import bot.console as console
 import bot.utils as utils
-import bot.constants.config as config
 
 # INIT
 
@@ -28,7 +27,6 @@ token = utils.get_env_var("TOKEN", default=None, required=True, from_dot_env=Tru
 
 intents = discord.Intents.default()
 intents.message_content = True
-## intents.reactions = True
 
 bot = commands.Bot(command_prefix=constants.prefix, intents=intents, help_command=None) # create bot instance, remove built-in help command
 

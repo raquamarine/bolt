@@ -43,7 +43,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     <method>
 
     configures the cog for a specific moderation action.
-    accepts the following boolean keyword args:
+    accepts the following boolean kwargs:
     * timeout
     * ban
     * kick
@@ -57,7 +57,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
 
     self.use_duration = self.timeout and not self.is_un # temporary bans haven't been added yet and will be pretty hard to add
 
-    # TODO: refactor this area here to NOT use a billion if blocks
+    # TODO: refactor below to use dict mapping instead of if stacks or match-case
 
     if self.timeout:
       self.verb = "mute"
@@ -106,11 +106,12 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     * "kick"
     * "timeout"/"untimeout"
     '''
+    # TODO: make action_type smarter (probably inferred from config() settings instead of being manually passed in)
 
     user = ctx.author
     reason = reason or "None provided."
 
-    # that's a lot of console.log()s
+    # that's a lot of console.log() calls
     console.log(f"An action has been requested.", "LOG")
     console.log(f"Action type: {action_type}", "INFO")
     console.log(f"Target: {target} ({target.id})", "INFO")
@@ -118,9 +119,9 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     console.log(f"Reason: {reason}", "INFO")
     console.log(f"Duration: {duration}", "INFO")
 
-    # time for the checks and early returns!!!!
+    ## checks
 
-    if not await utils.assert_guild(ctx, guild=ctx.guild, user=user):
+    if not await utils.assert_guild(ctx):
       return
     
     if target == user:
@@ -133,7 +134,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
       console.log(f"{user} tried to {self.verb} {target} but doesn't have permission.", "LOG")
       return
     
-    # now we parse the duration
+    ## duration parsing
     
     if self.use_duration:
       seconds = utils.parse_duration(duration)
@@ -151,7 +152,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
           await utils.say(ctx, "Dude you can't even mute someone for that long.", ephemeral=True)
           return
       
-    # NOW we do the action. finally.
+    ## action execution
 
     try:
       match action_type:
