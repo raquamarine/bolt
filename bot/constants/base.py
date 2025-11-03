@@ -22,7 +22,7 @@ prefix = get_env_var("PREFIX", default=default_prefix, required=False, from_dot_
 # ad: this feels very cursed
 # spark: it 100% is.
 
-_cogs = list(Path('bot/_cogs').iterdir())
+_cogs = list(Path('bot/cogs').iterdir())
 extensions = []
 _regex = lambda i : re.sub('[/\\\\]','.',re.sub('.py$','',str(i.relative_to('bot/_cogs'))))
 
