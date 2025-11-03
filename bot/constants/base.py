@@ -29,7 +29,7 @@ for i in f:
   if i.name == '__init__.py' or i.name == '__pycache__' or i.name == 'base.py':
     pass
   elif i.is_file():
-    print(f"bot.cogs.{n(i)}")
+    #print(f"bot.cogs.{n(i)}")
     extensions.append(f"bot.cogs.{n(i)}")
   else:
     for j in i.iterdir():
