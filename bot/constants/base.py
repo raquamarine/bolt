@@ -31,7 +31,7 @@ for i in _cogs:
     continue
 
   if i.is_file():
-    extensions.append(f"bot._cogs.{_regex(i)}")
+    extensions.append(f"bot.cogs.{_regex(i)}")
   else:
     for j in i.iterdir():
       _cogs.append(j)
