@@ -24,7 +24,7 @@ prefix = get_env_var("PREFIX", default=default_prefix, required=False, from_dot_
 
 _cogs = list(Path('bot/cogs').iterdir())
 extensions = []
-_regex = lambda i : re.sub('[/\\\\]','.',re.sub('.py$','',str(i.relative_to('bot/cogs'))))
+_regex = lambda i : re.sub('[/\\\\]', '.', re.sub('.py$','',str(i.relative_to('bot/cogs'))))
 
 for i in _cogs:
   if i.name in ('__pycache__', '__init__.py', 'base.py'):

@@ -18,7 +18,6 @@ import time # TODO: replace with datetime
 # NOTE: yes we are not using logging
 #       we are literally just printing to stdout
 #       there is no need to make things more complicated
-#       as PEP 20 says, "Simple is better than complex."
 
 ## pypkg
 

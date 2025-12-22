@@ -57,8 +57,8 @@ async def on_command_error(ctx, error):
   '''
 
   if isinstance(error, commands.CommandNotFound):
-    console.log(str(error), "ERROR") # before_console_start is irrelevant here
-    await utils.say(ctx, f"Command not found. \nRun {constants.prefix}help to see all available commands.") # is_slash is False by default
+    console.log(str(error), "ERROR")
+    await utils.say(ctx, f"Command not found. \nRun {constants.prefix}help to see all available commands.")
 
 ## START UP
 

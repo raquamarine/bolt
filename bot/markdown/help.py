@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# bot/constants/help_md.py
+# bot/markdown/help.py
 '''
 paired with bot/markdown/help.md
 '''
