@@ -1,17 +1,18 @@
 [preferences]
 
 prefix = "."
+bot_name = "Bolt"
 
 [logging]
 
 levels_to_ignore = ["INFO", "DEBUG"]
 
-[database]
-
-provider = "sqlite"
-retry_attempts = 3
-db_directory = "data"
-
 [cogs]
 
 disabled = []
+
+[markdown]
+
+support_server = "https://discord.gg/hF6mgCE3gT"
+github_repo = "https://github.com/sparkhere-sys/bolt"
+invite_link = "https://sparkhere-sys.github.io/bolt"
