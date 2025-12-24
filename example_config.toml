@@ -1,0 +1,17 @@
+[preferences]
+
+prefix = "."
+
+[logging]
+
+levels_to_ignore = ["INFO", "DEBUG"]
+
+[database]
+
+provider = "sqlite"
+retry_attempts = 3
+db_directory = "data"
+
+[cogs]
+
+disabled = []
