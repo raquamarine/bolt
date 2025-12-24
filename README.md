@@ -33,6 +33,7 @@ Or just add the bot to your server. Feel free.
 * Python 3.10+ because we used `match-case` and not a ton of `if-elif-else`s
 * [`py-cord`](https://pypi.org/project/py-cord/) (`pip install py-cord`)
 * [`python-dotenv`](https://pypi.org/project/python-dotenv/) (`pip install python-dotenv`)
+* [`toml`](https://pypi.org/project/toml/) (`pip install toml`)
 * If using Python 3.13, also install [`audioop-lts`](https://pypi.org/project/audioop-lts) (pycord apparently insists on using it even without using audio features. thanks, pycord.)
 * Optional: [`colorama`](https://pypi.org/project/colorama) so your logs look :sparkles:pretty:sparkles:
 
@@ -46,7 +47,9 @@ First, clone the repo:
 git clone https://github.com/sparkhere-sys/bolt.git && cd bolt
 ```
 
-Next, set up a virtual environment. (no, not a virtual machine.) The instructions will vary depending on your OS of choice.
+Optionally but highly recommended, you can set up a virtual environment. (no, not a virtual machine.)
+
+The instructions differ based on your OS:
 
 * Linux/macOS:
 
@@ -67,12 +70,13 @@ Now install all the dependencies:
 pip install -r requirements.txt # or you can install them manually
 ```
 
-Then, create a `.env` file containing your bot's token and the prefix you want to use:
+Then, create a `.env` file in the root directory with your bot's token.
 
 ```ini
 TOKEN=your_token_here
-PREFIX=.
 ```
+
+After that, copy `example_config.toml` to `config.toml` and edit it to customize how the bot works. (or you could leave it as is)
 
 Once all of that is done, run:
 ```bash
