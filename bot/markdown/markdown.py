@@ -30,6 +30,7 @@ class Help:
   path: Path = Path("bot/markdown/help.md")
   repo_link: str = markdown["github_repo"]
   support_server_link: str = markdown["support_server"]
+  help_repo_message: str = markdown["help_repo_message"]
 
   find_and_replace: dict = field(default_factory=dict)
   
@@ -38,7 +39,7 @@ class Help:
       self.find_and_replace.update({
         "{prefix}": prefix,
         "{support}": f"<{self.support_server_link}>",
-        "{repo}": f"Bolt is open source! You can find the code at <{self.repo_link}>",
+        "{repo}": f"{self.help_repo_message}<{self.repo_link}>",
       })
 
 @dataclass(frozen=False)

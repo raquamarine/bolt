@@ -7,7 +7,6 @@ this file creates the bot instance, loads cogs, and starts the bot.
 
 # LIBRARIES AND MODULES
 
-from sys import prefix
 import time
 
 ## pycord
