@@ -12,7 +12,7 @@ from bot.constants.config import default_prefix
 
 # PATHS
 
-config_path = Path("bot/config.toml")
+config_path = Path("config.toml")
 
 # LOAD TOML
 
