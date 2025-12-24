@@ -13,6 +13,6 @@ disabled = []
 
 [markdown]
 
-support_server = "https://discord.gg/hF6mgCE3gT"
-github_repo = "https://github.com/sparkhere-sys/bolt"
-invite_link = "https://sparkhere-sys.github.io/bolt"
+support_server = "https://discord.gg/yourserver"
+github_repo = "https://github.com/your/repo"
+invite_link = "https://example.com/invite"
