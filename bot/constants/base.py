@@ -27,13 +27,11 @@ _cogs = list(Path('bot/cogs').iterdir())
 extensions = []
 _regex = lambda i : re.sub('[/\\\\]', '.', re.sub('.py$','',str(i.relative_to('bot/cogs'))))
 _ignored_files = ('__pycache__', '__init__.py', 'base.py')
-
 for i in _cogs:
   if i.name in _ignored_files:
     continue
-
-  if i.is_file():
+  elif i.is_file() and str(i)[-3:] == ".py":
     extensions.append(f"bot.cogs.{_regex(i)}")
-  else:
+  elif i.is_dir():
     for j in i.iterdir():
       _cogs.append(j)

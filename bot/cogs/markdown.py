@@ -17,7 +17,7 @@ from discord.ext import commands
 import bot.console as console
 import bot.utils as utils
 import bot.markdown.markdown as markdown
-
+import functools
 # CLASSES
 
 class MarkdownCommands(commands.Cog):
@@ -28,6 +28,7 @@ class MarkdownCommands(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
   
+  @functools.cache
   def fetch_markdown_file(self, cmd_type: str): # cmd_type is a string because i dont know how to use enums.
     '''
     <method>

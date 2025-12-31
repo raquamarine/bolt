@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 # pypkg
 
-from bot.constants.toml import markdown
+import bot.constants.toml as toml_config
 
 # DATA CLASSES
 
@@ -28,9 +28,9 @@ format:
 @dataclass(frozen=False)
 class Help:
   path: Path = Path("bot/markdown/help.md")
-  repo_link: str = markdown["github_repo"]
-  support_server_link: str = markdown["support_server"]
-  help_repo_message: str = markdown["help_repo_message"]
+  repo_link: str = toml_config.github_repo
+  support_server_link: str = toml_config.support_server
+  help_repo_message: str = toml_config.help_repo_message
 
   find_and_replace: dict = field(default_factory=dict)
   
@@ -45,8 +45,8 @@ class Help:
 @dataclass(frozen=False)
 class Invite:
   path: Path = Path("bot/markdown/invite.md")
-  invite_link: str = markdown["invite_link"]
-  support_server_link: str = markdown["support_server"]
+  invite_link: str = toml_config.invite_link
+  support_server_link: str = toml_config.support_server
 
   find_and_replace: dict = field(default_factory=dict)
 
