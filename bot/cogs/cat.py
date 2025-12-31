@@ -25,13 +25,19 @@ class CatCommand(commands.Cog):
         response = requests.get(catapi)
         image = BytesIO(response.content)
         image.seek(0)
-        await ctx.send(file=discord.File(image, filename="image.png"))
+        #await ctx.send(file=discord.File(image, filename="image.png"))
+        await ctx.respond(file=discord.File(image, filename="image.png"))
 
     #COMMANDS
 
     @commands.slash_command(name="cat", description="sends a random cat image")
+    async def slash_cat(self, ctx):
+        await self._cat(ctx)
+
+    @commands.command()
     async def cat(self, ctx):
         await self._cat(ctx)
+
 
 # FUNCTIONS
 
