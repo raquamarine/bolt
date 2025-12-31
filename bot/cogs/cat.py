@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# path/to/file.py
+# bot/cogs/cat.py
 
 # LIBRARIES AND MODULES
 
