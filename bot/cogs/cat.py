@@ -25,7 +25,6 @@ class CatCommand(commands.Cog):
         response = requests.get(catapi)
         image = BytesIO(response.content)
         image.seek(0)
-        #await ctx.send(file=discord.File(image, filename="image.png"))
         await ctx.respond(file=discord.File(image, filename="image.png"))
 
     #COMMANDS
