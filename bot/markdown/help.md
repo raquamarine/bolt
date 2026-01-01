@@ -14,6 +14,7 @@
 `{prefix}ping`: Ping Bolt.
 `{prefix}echo`: Make Bolt say something.
 `{prefix}invite`: Invite Bolt to your server.
+`{prefix}cat`: Get a random cat picture.
 
 ## Support Server
 Join the support server:
