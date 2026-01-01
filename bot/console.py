@@ -22,7 +22,7 @@ import time # TODO: replace with datetime
 ## pypkg
 
 import bot.constants.colors as colors
-from bot.constants.toml import logging
+import bot.constants.toml as toml_config
 
 # FUNCTIONS
 
@@ -33,7 +33,7 @@ def log(msg, level="LOG"):
 
   level = level.upper()
 
-  if level in logging["levels_to_ignore"]:
+  if level in toml_config.levels_to_ignore:
     return
 
   level_str = f"{colors.log_colors.get(level, '')}[{level}]{colors.reset_colors}"

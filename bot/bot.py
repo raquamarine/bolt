@@ -28,7 +28,7 @@ token = utils.get_env_var("TOKEN", default=None, required=True, from_dot_env=Tru
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix=toml_config.preferences["prefix"], intents=intents, help_command=None) # create bot instance, remove built-in help command
+bot = commands.Bot(command_prefix=toml_config.prefix, intents=intents, help_command=None) # create bot instance, remove built-in help command
 
 # FUNCTIONS
 

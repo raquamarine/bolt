@@ -4,7 +4,7 @@
 # LIBRARIES AND MODULES
 
 from pathlib import Path
-import toml
+import tomllib as toml
 
 ## pypkg
 
@@ -16,8 +16,11 @@ config_path = Path("config.toml")
 
 # LOAD TOML
 
-with open(config_path, "r", encoding="utf-8") as f:
-  data = toml.load(f)
+try:
+  with open(config_path, "rb") as f:
+    data = toml.load(f)
+except FileNotFoundError:
+  data = {}
 
 # CONSTANTS
 
