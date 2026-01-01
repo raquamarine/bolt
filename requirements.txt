@@ -2,7 +2,6 @@
 py-cord
 python-dotenv
 requests
-toml
 
 # 3.13+
 audioop-lts; python_version >= '3.13'
