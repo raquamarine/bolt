@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # bot/constants/config.py
 '''
-loaded by utils.py, console.py, and bot.py
-
-not really sure why this file is called "config" but eh
-if it aint broke dont fix it
+Configuration constants for the bot.
 '''
+# i know the name is weird but if it aint broke dont fix it. -spark
 
 # LIBRARIES AND MODULES
 

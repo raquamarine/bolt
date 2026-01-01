@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # bot/constants/moderation.py
 '''
-permission mappings for moderation actions
+Permission mappings for moderation commands.
 
-used by class Base in bot/cogs/moderation/base.py to check permissions
+Used by moderation cogs to check for required permissions.
 '''
 
 # CONSTANTS

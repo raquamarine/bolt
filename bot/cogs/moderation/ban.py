@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # bot/cogs/moderation/ban.py
+'''
+Contains the Ban cog.
+'''
 
 # LIBRARIES AND MODULES
 
@@ -15,6 +18,10 @@ from bot.cogs.moderation.base import Base
 # CLASSES
 
 class Ban(Base):
+  '''
+  Inherits from Base and handles the ban and unban commands.
+  '''
+
   def __init__(self, bot):
     super().__init__(bot)
     self.config(ban=True)
@@ -40,7 +47,12 @@ class Ban(Base):
   async def slash_unban(self, ctx: discord.ApplicationContext, target: discord.User, reason: str | None = None):
     self.config(ban=True, is_un=True)
     await self.action(ctx, target, reason)
+
 # FUNCTIONS
 
 def setup(bot):
+  '''
+  Adds the Ban cog to the bot.
+  '''
+  
   bot.add_cog(Ban(bot))

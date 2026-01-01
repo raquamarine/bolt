@@ -36,7 +36,7 @@ class Cat(commands.Cog):
 
     console.log(f"Cat image requested by {user} ({user.id})", "LOG")
 
-    await utils.say(ctx, file=discord.File(image, filename="image.png"))
+    await utils.say(ctx, file=discord.File(image, filename="image.png")) # type: ignore
 
   # COMMANDS
 

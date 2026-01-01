@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
 # bot/__main__.py
 '''
-main entry point.
+Main entry point for the bot.
+
+Runs when executing `python -m bot`.
 '''
 
 # LIBRARIES AND MODULES
@@ -17,7 +18,16 @@ import bot.console as console
 
 def main():
   '''
-  le bootstrapper
+  The bootstrapper.
+
+  ### Parameters
+  none.
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  nothing.
   '''
   
   try:
