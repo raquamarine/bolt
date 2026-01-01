@@ -79,7 +79,7 @@ def parse_duration(duration: str): # the return type annotations are gone now. s
 
   return total_seconds if total_seconds > 0 else False
 
-async def say(ctx: discord.ApplicationContext | commands.Context, msg: str, ephemeral=False, file=None):
+async def say(ctx: discord.ApplicationContext | commands.Context, msg: str = "", ephemeral=False, file=None):
   '''
   a wrapper around ctx.send() and ctx.respond().
   '''
