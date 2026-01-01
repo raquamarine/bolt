@@ -87,7 +87,8 @@ async def say(ctx: discord.ApplicationContext | commands.Context, msg: str = "",
   if isinstance(ctx, discord.ApplicationContext):
     await ctx.respond(msg, ephemeral=ephemeral, file=file)
   else:
-    await ctx.send(msg, file=file)
+    await ctx.send(msg, file=file) # type: ignore
+    # the comment there is for pylance to shut up
 
 async def assert_guild(ctx):
   # spark: i despise this function
