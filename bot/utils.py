@@ -79,15 +79,15 @@ def parse_duration(duration: str): # the return type annotations are gone now. s
 
   return total_seconds if total_seconds > 0 else False
 
-async def say(ctx: discord.ApplicationContext | commands.Context, msg: str, ephemeral=False):
+async def say(ctx: discord.ApplicationContext | commands.Context, msg: str = "", ephemeral=False, file=None):
   '''
   a wrapper around ctx.send() and ctx.respond().
   '''
 
   if isinstance(ctx, discord.ApplicationContext):
-    await ctx.respond(msg, ephemeral=ephemeral)
+    await ctx.respond(msg, ephemeral=ephemeral, file=file)
   else:
-    await ctx.send(msg)
+    await ctx.send(msg, file=file)
 
 async def assert_guild(ctx):
   # spark: i despise this function
