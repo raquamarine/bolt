@@ -41,4 +41,3 @@ def log(msg, level="LOG"):
   full = f"{level_str} {time_str} {msg}"
 
   print(full)
-  

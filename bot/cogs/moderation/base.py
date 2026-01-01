@@ -59,21 +59,21 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
 
     dict_map = {
       "ban": (("ban", "banned"), ("unban", "unbanned")),
-      "kick": (("kick", "kicked"), ("unkick", "unkicked")), # unkicking is not a real thing, i know. just to avoid any bugs with is_un
-      "timeout": (("timeout", "timed out"), ("untimeout", "untimeout")),
+      "kick": (("kick", "kicked"), ("kick", "kicked")),
+      "timeout": (("mute", "muted"), ("unmute", "unmuted")),
     }
 
     if self.ban:
-      mapping_key = "ban" if not self.is_un else "unban"
+      mapping_key = "ban"
     elif self.kick:
-      mapping_key = "kick" if not self.is_un else "unkick"
+      mapping_key = "kick"
     elif self.timeout:
-      mapping_key = "timeout" if not self.is_un else "untimeout"
+      mapping_key = "timeout"
 
-    self.verb, self.verb_past = dict_map[mapping_key][0] if not self.is_un else dict_map[mapping_key][1]
+    self.verb, self.verb_past = dict_map[mapping_key][0 if not self.is_un else 1]
 
   
-  def check_for_permissions(self, perm, user, map):
+  def check_for_permissions(self, perm, user, perm_map):
     '''
     <method>
     
@@ -86,10 +86,10 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     if not perm:
       return False # early return
     
-    if not perm in map:
+    if not perm in perm_map:
       return False # ditto
     
-    if getattr(user.guild_permissions, map[perm], False):
+    if getattr(user.guild_permissions, perm_map[perm], False):
       return True # ditto
     
     return False
@@ -124,6 +124,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     console.log(f"Requested by: {user} ({user.id})", "INFO")
     console.log(f"Reason: {reason}", "INFO")
     console.log(f"Duration: {duration}", "INFO")
+    console.log(f"In guild: {ctx.guild} ({ctx.guild.id})", "INFO")
 
     ## checks
 
@@ -135,7 +136,7 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
       console.log(f"{user} tried to {self.verb} themselves.", "INFO")
       return
     
-    if not self.check_for_permissions(action_type, user, map=perm_map if not self.is_un else un_perm_map):
+    if not self.check_for_permissions(action_type, user, perm_map=perm_map if not self.is_un else un_perm_map):
       await utils.say(ctx, f"You don't have permission to {self.verb} members.", ephemeral=True)
       console.log(f"{user} tried to {self.verb} {target} but doesn't have permission.", "INFO")
       return
