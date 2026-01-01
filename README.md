@@ -33,6 +33,8 @@ Or just add the bot to your server. Feel free.
 * Python 3.10+ because we used `match-case` and not a ton of `if-elif-else`s
 * [`py-cord`](https://pypi.org/project/py-cord/) (`pip install py-cord`)
 * [`python-dotenv`](https://pypi.org/project/python-dotenv/) (`pip install python-dotenv`)
+* [`requests`](https://pypi.org/project/requests/) (`pip install requests`)
+* [`toml`](https://pypi.org/project/toml/) (`pip install toml`)
 * If using Python 3.13, also install [`audioop-lts`](https://pypi.org/project/audioop-lts) (pycord apparently insists on using it even without using audio features. thanks, pycord.)
 * Optional: [`colorama`](https://pypi.org/project/colorama) so your logs look :sparkles:pretty:sparkles:
 
@@ -67,12 +69,12 @@ Now install all the dependencies:
 pip install -r requirements.txt # or you can install them manually
 ```
 
-Then, create a `.env` file containing your bot's token and the prefix you want to use:
-
+Create a `.env` file in the root directory of the repo, and add your bot's token:
 ```ini
 TOKEN=your_token_here
-PREFIX=.
 ```
+
+Then, copy the example config file and edit it to your preferences.
 
 Once all of that is done, run:
 ```bash
@@ -82,7 +84,7 @@ to start the bot.
 
 # uhhh bye
 
-made with <3 by spark and the bolt dev team (currently only 3 people lol)
+made with <3 by spark and the bolt dev team (currently only 4 people lol)
 
 contact me:
 
