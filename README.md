@@ -34,7 +34,6 @@ Or just add the bot to your server. Feel free.
 * [`py-cord`](https://pypi.org/project/py-cord/) (`pip install py-cord`)
 * [`python-dotenv`](https://pypi.org/project/python-dotenv/) (`pip install python-dotenv`)
 * [`requests`](https://pypi.org/project/requests/) (`pip install requests`)
-* [`toml`](https://pypi.org/project/toml/) (`pip install toml`)
 * If using Python 3.13, also install [`audioop-lts`](https://pypi.org/project/audioop-lts) (pycord apparently insists on using it even without using audio features. thanks, pycord.)
 * Optional: [`colorama`](https://pypi.org/project/colorama) so your logs look :sparkles:pretty:sparkles:
 
