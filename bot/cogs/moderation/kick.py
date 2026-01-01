@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # bot/cogs/moderation/kick.py
+'''
+Contains the Kick cog.
+'''
 
 # LIBRARIES AND MODULES
 
@@ -15,6 +18,10 @@ from bot.cogs.moderation.base import Base
 # CLASSES
 
 class Kick(Base):
+  '''
+  Inherits from Base and handles the kick command.
+  '''
+
   def __init__(self, bot):
     super().__init__(bot)
     self.config(kick=True)
@@ -32,4 +39,8 @@ class Kick(Base):
 # FUNCTIONS
 
 def setup(bot):
+  '''
+  Adds the Kick cog to the bot.
+  '''
+
   bot.add_cog(Kick(bot))

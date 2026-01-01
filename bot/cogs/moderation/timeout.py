@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # bot/cogs/moderation/timeout.py
+'''
+Contains the Timeout cog.
+'''
 
 # LIBRARIES AND MODULES
 
@@ -15,6 +18,10 @@ from bot.cogs.moderation.base import Base
 # CLASSES
 
 class Timeout(Base):
+  '''
+  Inherits from Base and handles the timeout (mute) and untimeout (unmute) commands.
+  '''
+
   def __init__(self, bot):
     super().__init__(bot)
     self.config(timeout=True)
@@ -44,4 +51,8 @@ class Timeout(Base):
 # FUNCTIONS
 
 def setup(bot):
+  '''
+  Adds the Timeout cog to the bot.
+  '''
+
   bot.add_cog(Timeout(bot))

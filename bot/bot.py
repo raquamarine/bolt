@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # bot/bot.py
 '''
-the bootstrapper for the bot
-this file creates the bot instance, loads cogs, and starts the bot.
+Bootstrapper for the bot.
+
+Initializes the bot, loads cogs, and starts the bot.
 '''
 
 # LIBRARIES AND MODULES
@@ -37,38 +38,62 @@ bot = commands.Bot(command_prefix=toml_config.prefix, intents=intents, help_comm
 @bot.event
 async def on_ready():
   '''
-  event that runs when the bot connects to discord.
+  This function is an event that runs when the bot is ready.
+
+  Sets the bot's start time and logs that the bot is online.
+
+  ### Parameters
+  none
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  nothing.
   '''
 
   setattr(bot, "start_time", time.time())
   console.log(f"Bolt is online as {bot.user}", "LOG")
 
 @bot.event
-async def on_command_error(ctx, error):
+async def on_command_error(ctx: commands.Context, error: commands.CommandError):
   '''
-  runs on every command error.
+  This function is an event that runs on every command error.
 
-  currently only handles CommandNotFound errors because the cogs should have their own error handling.
+  This currently only handles CommandNotFound errors, as the cogs are expected to have their own
+  error handling.
 
-  KNOWN BUG:
-  - if you type something like "..." then the bot will assume that
-    ".." is a command and will throw a CommandNotFound error.
-    why is this? because of our choice of default prefix. uhhh...
-    sorry?
+  ### Parameters
+  * ctx (commands.Context): the context of the command that caused the error.
+                            only handles prefix commands, not slash commands.
+  * error (commands.CommandError): the error that was raised
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  nothing.
   '''
 
   if isinstance(error, commands.CommandNotFound):
     console.log(str(error), "ERROR")
-    await utils.say(ctx, f"Command not found. \nRun {constants.prefix}help to see all available commands.")
+    await utils.say(ctx, f"Command not found. \nRun {toml_config.prefix}help to see all available commands.")
 
 ## START UP
 
 def load_cogs(reload=False, reraise=True):
   '''
-  loads all cogs defined in constants.extensions.
-  raises an exception if any cog fails to load.
+  This function loads all cogs defined in constants.extensions.
 
-  any cog that isn't in constants.extensions will NOT be loaded, so dont forget to update the tuple when adding or removing cogs.
+  ### Parameters
+  * reload (bool): whether to reload the cogs instead of loading them. default: False
+  * reraise (bool): whether to reraise exceptions encountered while loading cogs. default: True
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  No specific exceptions, but will reraise any exceptions encountered while loading cogs if reraise is True.
   '''
 
   for ext in constants.extensions:
@@ -88,8 +113,20 @@ def load_cogs(reload=False, reraise=True):
 
 def start_bot():
   '''
-  okay dude does this seriously need a docstring
+  This function starts the bot.
+
+  ### Parameters
+  none.
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  nothing.
   '''
+  # okay dude did this seriously need a docstring
+  # if you needed a docstring to comprehend how this works then you my friend
+  # lack basic mental abilities. -spark
 
   load_cogs()
   bot.run(token)

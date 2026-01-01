@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # bot/console.py
 '''
-it just logs things.
-not sure what else to say.
+Logging utilities for the bot.
 '''
 
 # NOTE: this file is literally empty aside from log()
@@ -28,7 +27,29 @@ import bot.constants.toml as toml_config
 
 def log(msg, level="LOG"):
   '''
-  print wrapper that does the hard logging stuff for us.
+  Logs a message to the console with a given level, and formats it with colors.
+  
+  Example output:
+  `[LOG] [Fri Sep 25 14:23:29 1970] This is a log message.`
+
+  ### Accepted levels:
+  * "LOG"
+  * "INFO"
+  * "WARN"
+  * "ERROR"
+  * "DEBUG"
+  * "ERROR"
+  * "FATAL"
+
+  ### Parameters
+  * msg (str): the message to log
+  * level (str): the level of the log message. default: "LOG"
+
+  ### Returns
+  nothing.
+
+  ### Raises
+  nothing.
   '''
 
   level = level.upper()

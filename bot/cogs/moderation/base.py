@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 # bot/cogs/moderation/base.py
 '''
-this one was desperate for docstrings before the others lol
-
-base class for moderation actions.
+Contains the base class for moderation actions.
 '''
+# this one was desperate for docstrings before the others lol
 
 # LIBRARIES AND MODULES
 
@@ -25,14 +24,14 @@ import bot.utils as utils
 
 class Base(commands.Cog): # not actually a cog. it just inherits from commands.Cog
   '''
-  base class for moderation actions.
+  Base class for moderation actions.
 
-  USAGE:
-  * create a new class that extends this one
-  * treat that new class as a regular cog.
-  * in the __init__() method of that class, call super().__init__(bot),
+  ### Usage
+  * Create a new class that extends this one.
+  * Treat that new class as a regular cog.
+  * In the __init__() method of that class, call super().__init__(bot),
     and then call self.config() with the appropriate configuration kwargs.
-  * then create your commands as normal, and inside them call self.action() with the correct arguments.
+  * Then create your commands as normal, and inside them call self.action() with the correct arguments.
   '''
 
   def __init__(self, bot):
@@ -40,14 +39,18 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
 
   def config(self, **kwargs):
     '''
-    <method>
-
-    configures the cog for a specific moderation action.
-    accepts the following boolean kwargs:
+    This function configures the cog for a specific moderation action.
+    ### Accepted boolean kwargs:
     * timeout
     * ban
     * kick
     * is_un
+
+    ### Returns
+    nothing.
+
+    ### Raises
+    nothing.
     '''
   
     self.timeout = kwargs.get("timeout", False)
@@ -71,16 +74,21 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
       mapping_key = "timeout"
 
     self.verb, self.verb_past = dict_map[mapping_key][0 if not self.is_un else 1]
-
   
-  def check_for_permissions(self, perm, user, perm_map):
+  def check_for_permissions(self, perm: str, user, perm_map: dict) -> bool:
     '''
-    <method>
-    
-    checks if the user has the required permissions to perform the action.
-    perm should be a key in either perm_map or un_perm_map.
+    This command checks if the user has the required permissions to perform the action.
 
-    _perm_map refers to either perm_map or un_perm_map.
+    ### Parameters
+    * perm (str): the permission to check for (e.g. "ban", "kick", "timeout")
+    * user (discord.Member): the user to check the permissions for
+    * perm_map (dict): the permission mapping to use (e.g. perm_map or un_perm_map)
+
+    ### Returns
+    * bool: True if the user has the required permissions, False otherwise
+
+    ### Raises
+    nothing.
     '''
 
     if not perm:
@@ -94,16 +102,25 @@ class Base(commands.Cog): # not actually a cog. it just inherits from commands.C
     
     return False
 
-  async def action(self, ctx, target, reason: str | None = None, duration="30m"):
+  async def action(self,
+                   ctx: commands.Context | discord.ApplicationContext, 
+                   target,
+                   reason: str | None = None, 
+                   duration: str = "30m"):
     '''
-    <method>
-    
-    the big one.
-    performs the action specified by action_type using the configuration set defined by self.config().
-    action_type can be one of the following strings:
-    * "ban"/"unban"
-    * "kick"
-    * "timeout"/"untimeout"
+    This function performs the action specified by the configuration.
+
+    ### Parameters
+    * ctx (discord.ApplicationContext | commands.Context): the context of the command.
+    * target (discord.Member | discord.User): the member to perform the action on.
+    * reason (str | None): the reason for the action. default: None
+    * duration (str): the duration of the action (only for timeout). default: "30m"
+
+    ### Returns
+    nothing.
+
+    ### Raises
+    * ValueError: if an invalid action_type is specified.
     '''
 
     user = ctx.author

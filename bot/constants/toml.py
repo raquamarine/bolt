@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # bot/constants/toml.py
+'''
+Handles loading the config.toml file and loading constants from it.
+'''
 
 # LIBRARIES AND MODULES
 
