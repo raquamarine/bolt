@@ -30,7 +30,7 @@ class Cat(commands.Cog):
     response = requests.get(catapi)
     image = BytesIO(response.content)
     image.seek(0)
-    await ctx.respond(file=discord.File(image, filename="image.png"))
+    await utils.say(ctx, file=discord.File(image, filename="image.png"))
 
   # COMMANDS
 
