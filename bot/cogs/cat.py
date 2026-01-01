@@ -14,6 +14,7 @@ import discord
 # pypkg
 
 import bot.utils as utils
+import bot.console as console
 
 # CLASSES
 
@@ -26,22 +27,26 @@ class Cat(commands.Cog):
     self.bot = bot
 
   async def _cat(self, ctx):
+    user = ctx.author
+
     catapi = "https://cataas.com/cat"
     response = requests.get(catapi)
     image = BytesIO(response.content)
     image.seek(0)
+
+    console.log(f"Cat image requested by {user} ({user.id})", "LOG")
+
     await utils.say(ctx, file=discord.File(image, filename="image.png"))
 
   # COMMANDS
 
-  @commands.slash_command(name="cat", description="sends a random cat image")
-  async def slash_cat(self, ctx):
-    await self._cat(ctx)
-
   @commands.command()
   async def cat(self, ctx):
     await self._cat(ctx)
-
+  
+  @commands.slash_command(name="cat", description="sends a random cat image")
+  async def slash_cat(self, ctx):
+    await self._cat(ctx)
 
 # FUNCTIONS
 
