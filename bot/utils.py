@@ -115,9 +115,15 @@ async def say(ctx: commands.Context | discord.ApplicationContext, msg: str = "",
   '''
 
   if isinstance(ctx, discord.ApplicationContext):
-    await ctx.respond(msg, ephemeral=ephemeral, file=file)
+    if isinstance(file, discord.File):
+      await ctx.respond(msg, ephemeral=ephemeral, file=file)
+    else:
+      await ctx.respond(msg, ephemeral=ephemeral)
   else:
-    await ctx.send(msg, file=file)
+    if isinstance(file, discord.File):
+      await ctx.send(msg, file=file)
+    else:
+      await ctx.send(msg)
 
 async def assert_guild(ctx: commands.Context | discord.ApplicationContext) -> bool:
   '''
