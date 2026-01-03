@@ -33,7 +33,7 @@ class Bunny(commands.Cog):
         api = "https://rabbit-api-two.vercel.app/api/random"
         data = requests.get(api).json()
 
-        image_url = data["url"] # it sends json with the bread and link instead of only the image
+        image_url = data["url"] # it sends json with the breed and link instead of only the image
         response = requests.get(image_url)
 
         image = BytesIO(response.content)
